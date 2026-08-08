@@ -38,6 +38,10 @@ Communication Architecture 的格式已经设计完（见 ADR-019 Freeze Boundar
 - Registry Sheet 本身的存取权限规划
 - Sheet 公式（QUERY 等）驱动 capabilities，在 Registry 数据量变大后的查询延迟，未经实际验证
 
+## 另一条独立线：Domain Data Layer（Repository + DataManagement）
+
+跟上面 0–10 的 Communication Architecture 是不同 session、不同关切——那边处理 Domain 之间怎么通讯，这里处理「一个 Domain 自己内部怎么存取资料」（Blueprint 现有 Data Layer 节点之下一层：Repository 业务查询、DataManagement 共用归档/索引/备份、StorageAdapter 存取 Sheets/Drive）。全程对照过 Rider OS 实际的 Constitution 与 `.xlsx` 资料，但 Repository/DataManagement 代码本身还没写。内容见 `UEF-ADR-DataManagement-Architecture.md`，格式跟 `UEF-ADR-Communication-Architecture.md` 一样——两段分别待插入 `UEF_ADR_Log.md` 与 Candidate Patterns 表。`domain-os-roadmap.md` 的资料量触发条件表也补了这次从 `.xlsx` 实测出的增速数字。
+
 ## 还没写的部分（范围提醒，不是遗漏）
 
 最早的构想里，Universal Engineering Framework 还包含 Governance、Blueprint Change Policy、AI 修改规则；Universal Domain Blueprint 还包含 Folder Structure、Module Boundary、Data Ownership 等。这个目录只处理了 Communication Architecture 这一层，而且这一层本身还没跟真实的 UEF v1.5 / Blueprint v1.2 对齐——这是刻意分阶段，不代表已经决定不需要，只是还没轮到，而且顺序可能因为这次的发现而调整。
