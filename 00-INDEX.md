@@ -4,7 +4,11 @@ INDEX 负责定位（orientation）——第一次进来，知道这个世界怎
 
 ## Universal Engineering Framework
 
-生态级工程治理——lifecycle、Engineering Principles、AI Engineering Protocol（含 export 纪律）、编码规则、版本/ADR 治理。**只认当前最新版**：`Universal_Engineering_Framework_v1_11.md`。v1.5–v1.10 是历史版本，见下方 Historical / Archive。
+生态级工程治理——lifecycle、Engineering Principles、AI Engineering Protocol（含 export 纪律、File/Engine/Sprint checkpoint 层级）、编码规则、版本/ADR 治理。**只认当前最新版**：`Universal_Engineering_Framework_v1_12.md`。v1.5–v1.11 是历史版本，见下方 Historical / Archive。
+
+## Recovery / Continuity
+
+跨 project/OS 或跨 AI session 的 checkpoint 记录 → `Universal-Recovery-Manifest.md`（`Universal_Engineering_Framework_v1_12.md` §0.6 item 4 要求的 ecosystem-level artifact）。单一 project 内自己的 file/Engine/Sprint checkpoint 记在该 project 自己的 `00_Project_State.js`，不在这里查。
 
 ## Domain OS
 
@@ -24,7 +28,7 @@ Domain OS「能包含什么」的架构蓝图，Tier 1/2/3 分级 → `Universal
 
 ## Historical / Archive
 
-`Universal_Engineering_Framework_v1_5.md` ~ `v1_10.md`——v1.11 的 provenance，只在要查某条规则当初怎么来的、有没有被后续版本改写时才打开，不当现行规则依据。`Communication-Architecture-ADR-019-021.md` 已过时，被拆分后的 `ADR-019/020/021` 取代，不要读。
+`Universal_Engineering_Framework_v1_5.md` ~ `v1_11.md`——v1.12 的 provenance，只在要查某条规则当初怎么来的、有没有被后续版本改写时才打开，不当现行规则依据。`Communication-Architecture-ADR-019-021.md` 已过时，被拆分后的 `ADR-019/020/021` 取代，不要读。
 
 ---
 

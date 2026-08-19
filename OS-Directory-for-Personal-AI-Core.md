@@ -2,6 +2,53 @@
 
 供 Personal AI Core 查询"某个请求该找哪个 Domain"用。判断路由或需要了解某个 Domain 大致职责时，先查这份名录，不必读整份 Universal Blueprint 或 Communication Registry。
 
+---
+
+## Universal Persistence / Checkpoint Governance — 采用状态
+
+`Universal_Engineering_Framework_v1_12.md` §0.6 item 3-4（Atomic Persistence / Checkpoint Rule）新增于 2026-08-16。下表区分四种状态，不把「规则存在」直接等同「已采用」——**Adopted 是 UEF 的 governing-authority 关系（D1）自动成立的**，不需要该 OS 自己的文件才生效；**Verified 则需要真的打开该 OS 自己的治理文件核对**。本 session 上传的 `Master-main.zip` 只包含 Universal/UEF 层，不含任何单一 OS 自己的 repo，所以下表目前没有一格是 Verified——这不是遗漏，是如实反映本 session 能核对到的范围。
+
+| OS | Rule Defined | Adopted (inherited) | Verified | Checkpoint System Active |
+|---|---|---|---|---|
+| Personal AI Core | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
+| Rider OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
+| Finance OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Property OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Reminder OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Personal Life OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| News OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Inventory & Procurement OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Execution OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Content / Video OS | ✅ | N/A（尚未设计架构） | N/A | N/A |
+| Research / Knowledge OS | ✅ | N/A（尚未设计架构） | N/A | N/A |
+| Decision OS | ✅ | N/A（尚未开工） | N/A | N/A |
+| Health OS | ✅ | N/A（仅构想阶段） | N/A | N/A |
+
+**Personal AI Core — 详细状态（2026-08-17 完成本地采纳后更新）**
+
+上一版这里曾写「Personal AI Core 连自己最初 adopted UEF 的 ADR log 都没有」——这是错的，予以订正：Personal AI Core 其实有一份内容扎实的 ADR 记录（ADL-001~005），文件叫 `00_Architecture_Decision_Log.js`，只是不叫 UEF §0.2 表格期待的通用命名 `00_ADR_Log.js`。这只是命名差异，不重命名这个文件，也不因此新增任何治理要求。
+
+- Universal Defined：✅（`Universal_Engineering_Framework_v1_12.md` §0.6 item 3-4）
+- Inherited by Governance Authority：✅（D1，自动继承，从规则存在那一刻起就成立）
+- Locally Adopted：✅——`00_Architecture_Decision_Log.js` 新增 ADL-005（决策记录，未解锁 P8，未改写 P6.1），Constitution「四、Coding Rules」新增 C13，两者均已完成
+- File-level Verification：✅，但**仅限本次任务实际改过的三个文件**（`00_Architecture_Decision_Log.js`／`00_Project_Constitution.js`／`00_Project_State.js`，各自都走完 persist + 独立核验 + 记录 checkpoint）——不代表 Personal AI Core 全部文件都已核对过，也不代表其它未改动的文件有任何问题
+- Overall Personal AI Core Governance Verification：✅ **Confirmed** — Phase C Final Acceptance 已于 2026-08-17 完成（read-only 逐项核验全数通过，无 blocking discrepancy，见 `Universal-Recovery-Manifest.md` 对应 checkpoint）。以上四点依然分开记录，不合并成一个笼统的"已 Verified"——这一条是最后到位的，不是从一开始就跟其它三点同时成立
+
+**已知缺口（本次任务发现，不在此次处理范围内，仅记录，不擅自决定）**
+- registry 命名跟 `Universal_Engineering_Framework_v1_12.md` 自己的 Scope 行、以及这次任务需求里的清单，三边对不齐：Scope 行另外提到 Productivity OS（当现有项目）、Investment/Shopping/Vehicle OS（当未来项目），这份名录都没有；需求里的 "Investment OS" 最接近的对应可能是这里的 Finance OS，但不确定是否同一个；"Compliance OS" 整个仓库只在 `domain-os-roadmap.md` 的举例文字出现过一次，没有正式条目；需求里的 "Procurement OS"／"Inventory OS" 在这份名录里是合并的同一个 Inventory & Procurement OS
+- Rider OS 的 `00_Project_Constitution.js` 头部"Governed by: UEF v1.1"这一行从未随后续同步更新过（本地仓库另外留有 v1.2/v1.3 快照）——ADR-009 里记录了这个发现，没有修复
+- Rider OS 自己的 `UEF_ADR_Log.md`（ecosystem-level ADR，含 UEF-ADR-001）在这次任务实际处理的 Master repo 快照里没有找到对应/延续的文件——是命名/结构已经变动，还是这份 ecosystem-level 记录本身失落了，待确认
+
+**Rider OS — 详细状态（2026-08-17）**
+
+Universal Defined ✅ ／ Inherited by Governance Authority ✅ ／ Locally Adopted ✅（`00_ADR_Log.js` 新增 ADR-009，`00_Project_Constitution.js` 新增 CR14）／ File-level Verification ✅（三个改过的文件——ADR Log／Constitution／Project State——都做了 diff+md5+独立 view，另外对整个仓库做了一次 `diff -rq`，确认只有这三个文件不同，其余 30+ 个应用代码/配置/历史文档文件逐一 identical）。
+
+跟 Personal AI Core 不同的地方：这一轮 audit（Phase A）与实作（Phase B/C-B 等价物）是在同一个回合里连续完成的，没有走 Personal AI Core 那种逐文件、逐步等你批准的节奏——这是因为你已经明确授权把整套流程当 proven pattern 直接套用，加上这一轮你提到马上要开新窗口。文件级的核验强度跟 Personal AI Core 是同一个标准（并不因为节奏压缩就降低），但没有经过你对每一步的实时确认，所以这里如实标成"完成，但未经你逐项审阅"，跟 Personal AI Core 那种经过你多轮明确批准的 Verified 不完全同一性质。
+
+*本节由 Universal Governance Propagation 任务（2026-08-16）建立。之后每次实际核对某个 OS 的真实 repo 后，回来更新对应格子，不要整批批量改——每次只改刚核对过的那一个 OS。*
+
+---
+
 ## Personal AI Core
 生态的 AI 中枢。负责 Router、AI Orchestrator、Prompt Manager、Memory、RAG、Context Builder、Knowledge Base、Audit、AI Capability Registry、Tool Calling，协调本地 AI 与云端 AI（Claude、GPT、Gemini、Qwen 等）之间的分工。
 **状态**：已连接 Personal Life OS、Reminder OS，核心能力持续开发中。

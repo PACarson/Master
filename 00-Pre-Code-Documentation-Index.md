@@ -8,8 +8,8 @@
 
 | # | 文档 | 用途 | 类别 | 适用范围 | 何时必读 | 何时可跳过 | 权威性 / 现行状态 | 相对优先级 |
 |---|---|---|---|---|---|---|---|---|
-| 1 | `Universal_Engineering_Framework_v1_11.md` | 生态级工程治理——lifecycle、Engineering Principles (EP1-6)、AI Engineering Protocol (§0.6，含 per-file export 规则)、UCR 编码规则、ADR/版本治理、Candidate Patterns | Engineering Governance | ALL code | 任何 coding task，无例外 | 从不可跳过 | **权威，现行**（最新版） | 1（最高，跟其他文档冲突时以此为准） |
-| 2 | `Universal_Engineering_Framework_v1_5~v1_10.md`（历史链） | D8/D9/D10 等既有 Decision 的出生纪录与 provenance | Engineering Governance（历史） | 不直接适用 coding | 要查证某条 Decision 有没有被后续版本悄悄改写意思时（§0.8 Fidelity check） | 其余情况一律跳过 | **非权威，历史** | 不覆盖 v1.11 |
+| 1 | `Universal_Engineering_Framework_v1_12.md` | 生态级工程治理——lifecycle、Engineering Principles (EP1-6)、AI Engineering Protocol (§0.6，含 per-file export 规则 + File/Engine/Sprint checkpoint 层级，v1.12 新增)、UCR 编码规则、ADR/版本治理、Candidate Patterns | Engineering Governance | ALL code | 任何 coding task，无例外 | 从不可跳过 | **权威，现行**（最新版） | 1（最高，跟其他文档冲突时以此为准） |
+| 2 | `Universal_Engineering_Framework_v1_5~v1_11.md`（历史链） | D8/D9/D10/D11 等既有 Decision 的出生纪录与 provenance | Engineering Governance（历史） | 不直接适用 coding | 要查证某条 Decision 有没有被后续版本悄悄改写意思时（§0.8 Fidelity check） | 其余情况一律跳过 | **非权威，历史** | 不覆盖 v1.12 |
 | 3 | `Universal_Domain_OS_Blueprint_v1.2.md` | Domain OS「能包含什么」——Tier 1/2/3 分级追踪哪些架构能力已被几个真实专案验证；明确只讲 What 不讲 How（BP-6） | Architecture | Architecture、Domain-specific | 设计/新增任何 Domain 能力、建新 Domain OS 之前 | 纯 bug fix、已有 pattern 内的小改动 | **权威，现行** | 2 |
 | 4 | `Universal-Domain-Blueprint.md` | 较早、非正式的草稿，同样讲 Entry/Service/Data Layer 切法——**跟 #3 不是同一份文件，名字很像** | Architecture | Architecture | v1.2 Blueprint 没覆盖到的具体结构问题 | v1.2 已有答案时 | 参考性，跟 #3 有重叠、权威关系未定案（见下方 Audit） | 低于 #3，冲突时不能当仲裁依据 |
 | 5-7 | `ADR-019-Communication-Protocol.md` / `ADR-020-Domain-Communication-Rules.md` / `ADR-021-Communication-Registry.md` | 跨 Domain 通讯协议——EventBus/CommandBus 双总线、Domain 间规则、Event/Command/Service Registry | Architecture / Communication | Domain-specific（跨 Domain 整合）、API | 新增或修改任何跨 Domain 的 Fact 发布、Command 派发、或 Registry 本身之前 | 完全在单一 Domain 内部、不涉及跨 Domain 通讯的工作 | **Status: Proposed——尚未对照 Personal AI Core / Rider OS / Reminder OS 真实代码验证**（见 Session-Handoff-Brief.md），当方向参考，不当已定案的硬约束 | 有条件的高（仅限适用范围内），每次引用都要附带「未验证」提醒 |
@@ -23,6 +23,7 @@
 | 15 | `Session-Handoff-Brief.md` | Communication Architecture 那条线目前进度、新窗口第一件该做的事 | Session 交接，非编码规则本身 | Other | 专门要接续 Communication Architecture 对照真实代码那件事时 | 其他任何任务 | 时间点快照，会过期，用前先核对日期 | 仅限该任务 |
 | 16 | `domain-os-roadmap.md` | GAS 内的 UI 现代化路径（Part A）+ 什么条件下才该考虑整个迁出 GAS（Part B/C） | Platform / 基础设施规划 | GAS 平台、Other | 评估要不要把某个 Domain 迁出 GAS、或做 UI 层决定时 | 纯后端/资料层工作 | 规划性，现行（2026-08-05 更新，本 session 的实测增速数字进一步确认 Part B 门槛还很远） | 中 |
 | 17 | `00-INDEX.md` | 整个仓库的地图与阅读顺序 | Meta / 导航 | Other | 第一次进这个仓库、或任何新文档加入之后 | — | **权威（关于「有什么、在哪里」），现行**——本文件应该被加进它 | 导航层 |
+| 18 | `Universal-Recovery-Manifest.md`（v1.12 新增） | 跨 project/OS 或跨 AI session 的 checkpoint 记录——timestamp/file/type/project/status/checkpoint level/source-of-truth/last verified state | Recovery / Continuity | 跨 project 或跨 session 的多文件工作 | 任何 Engine 或 Sprint 规模、可能跨 session 完成的工作开始前；每次完成一个 file/Engine/Sprint checkpoint 之后 | 单一文件、单一 session 内就能做完的小改动——直接记在该 project 自己的 `00_Project_State.js` 即可 | **权威，现行**（UEF §0.6 item 4 要求的 artifact） | 高，仅限需要跨 session 复原的工作 |
 
 ---
 
