@@ -13,10 +13,11 @@
 | Personal AI Core | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Rider OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Finance OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Investment OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Property OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Reminder OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Personal Life OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
-| News OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| News OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Inventory & Procurement OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Execution OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Content / Video OS | ✅ | N/A（尚未设计架构） | N/A | N/A |
@@ -35,7 +36,7 @@
 - Overall Personal AI Core Governance Verification：✅ **Confirmed** — Phase C Final Acceptance 已于 2026-08-17 完成（read-only 逐项核验全数通过，无 blocking discrepancy，见 `Universal-Recovery-Manifest.md` 对应 checkpoint）。以上四点依然分开记录，不合并成一个笼统的"已 Verified"——这一条是最后到位的，不是从一开始就跟其它三点同时成立
 
 **已知缺口（本次任务发现，不在此次处理范围内，仅记录，不擅自决定）**
-- registry 命名跟 `Universal_Engineering_Framework_v1_12.md` 自己的 Scope 行、以及这次任务需求里的清单，三边对不齐：Scope 行另外提到 Productivity OS（当现有项目）、Investment/Shopping/Vehicle OS（当未来项目），这份名录都没有；需求里的 "Investment OS" 最接近的对应可能是这里的 Finance OS，但不确定是否同一个；"Compliance OS" 整个仓库只在 `domain-os-roadmap.md` 的举例文字出现过一次，没有正式条目；需求里的 "Procurement OS"／"Inventory OS" 在这份名录里是合并的同一个 Inventory & Procurement OS
+- registry 命名跟 `Universal_Engineering_Framework_v1_12.md` 自己的 Scope 行、以及这次任务需求里的清单，原本三边对不齐；其中 "Investment OS 是否等同于 Finance OS" 这一条现已解开——实际审计 Investment OS 真实 repo 后确认两者是完全不同的独立项目（Investment OS 是投资组合/估值/股息追踪系统，有自己的 Constitution／ADR-1／30 个引擎文件；Finance OS 是订阅 Rider OS 支出事件的自动记账系统），Investment OS 现已单独成行，不再跟 Finance OS 混为一谈。仍未解开的：Scope 行提到的 Productivity OS（当现有项目）、Shopping/Vehicle OS（当未来项目）这份名录都没有；"Compliance OS" 整个仓库只在 `domain-os-roadmap.md` 的举例文字出现过，没有正式条目；需求里的 "Procurement OS"／"Inventory OS" 在这份名录里是合并的同一个 Inventory & Procurement OS
 - Rider OS 的 `00_Project_Constitution.js` 头部"Governed by: UEF v1.1"这一行从未随后续同步更新过（本地仓库另外留有 v1.2/v1.3 快照）——ADR-009 里记录了这个发现，没有修复
 - Rider OS 自己的 `UEF_ADR_Log.md`（ecosystem-level ADR，含 UEF-ADR-001）在这次任务实际处理的 Master repo 快照里没有找到对应/延续的文件——是命名/结构已经变动，还是这份 ecosystem-level 记录本身失落了，待确认
 
@@ -44,6 +45,26 @@
 Universal Defined ✅ ／ Inherited by Governance Authority ✅ ／ Locally Adopted ✅（`00_ADR_Log.js` 新增 ADR-009，`00_Project_Constitution.js` 新增 CR14）／ File-level Verification ✅（三个改过的文件——ADR Log／Constitution／Project State——都做了 diff+md5+独立 view，另外对整个仓库做了一次 `diff -rq`，确认只有这三个文件不同，其余 30+ 个应用代码/配置/历史文档文件逐一 identical）。
 
 跟 Personal AI Core 不同的地方：这一轮 audit（Phase A）与实作（Phase B/C-B 等价物）是在同一个回合里连续完成的，没有走 Personal AI Core 那种逐文件、逐步等你批准的节奏——这是因为你已经明确授权把整套流程当 proven pattern 直接套用，加上这一轮你提到马上要开新窗口。文件级的核验强度跟 Personal AI Core 是同一个标准（并不因为节奏压缩就降低），但没有经过你对每一步的实时确认，所以这里如实标成"完成，但未经你逐项审阅"，跟 Personal AI Core 那种经过你多轮明确批准的 Verified 不完全同一性质。
+
+**News OS — 详细状态（2026-08-19）**
+
+Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted ✅（`00_Project_Constitution.txt` 新增独立 §9「Engineering / AI-Assisted Development Governance」，`00_Project_State.txt` §1 新增 Governance 条目）／File-level Verification ✅，**仅限本次实际改过的两个文件**（`00_Project_Constitution.txt`／`00_Project_State.txt`，各自都走完 persist + 独立核验 + 记录 checkpoint）／Overall News OS Governance Verification ✅ **Confirmed**——本轮 audit（OS-N Read-Only Audit）与实作是你预先明确授权的单轮完成，核验强度与 Rider OS 同一标准。
+
+跟 Personal AI Core／Rider OS 不同的地方：News OS 没有既有的 ADR/ADL 机制——OS-N audit 已确认全仓库搜索 "ADR"／"ADL"／"Architecture Decision" 零命中，所以这次没有新增第三份"决策记录"文件，只改了两个文件（Constitution + Project State）；规则改用 News OS 自己既有的 §1 版本历史机制记录，没有套用 Personal AI Core／Rider OS 的三文件模式。新增的 §9 明确跟 News OS 自己既有的「persistent state」（P2，运行期 Sheets 资料）、「checkpoint」（File_Map §6，单次执行内的 sysLog 诊断标记）、「source of truth」（P7，哪个 Sheet 对某笔资料有权威性）、「verified」（Project_State 里对技术细节的确认）四种既有用法做了区分，避免术语冲突。
+
+Checkpoint System Active 仍标 ⏳ Pending——这轮只建立了规则，还没有后续实际开发工作可以证明规则真的被日常遵守，跟 Personal AI Core／Rider OS 目前的状态一致，不因为这轮完成就一并标记。
+
+News OS 现有的 L4 Knowledge Engine 7 天试运行、L5-L7（TrendEngine／InsightEngine／DecisionEngine）开发限制、3 项已知 WATCH 项目，本轮均未触碰。
+
+**Investment OS — 详细状态（2026-08-19）**
+
+Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted ✅（`00_Project_Constitution.txt` 新增独立章节「ENGINEERING ARTIFACT PERSISTENCE & DEPLOYMENT GOVERNANCE」G1-G4，`00_Project_State.txt` 用既有的 ARCHITECTURE DECISIONS 日志追加条目）／File-level Verification ✅，**仅限本次实际改过的两个文件**／Overall Investment OS Governance Verification ✅ **Confirmed**——audit（含一轮持久化目的地专项排查）与实作均在你逐步授权下完成。
+
+这个 registry 原本没有 Investment OS 这一行——三份任务需求文本里都点名过"Investment OS"，但这份名录一直没有对应条目，且已知缺口清单曾把它误判为"可能等同 Finance OS"。实际审计 Investment OS 真实 repo（804K，自己的 Constitution／ADR-1／30 个引擎文件）后确认这是一个完全独立的投资组合追踪系统，不是 Finance OS——已新增这一行，不是覆盖既有条目。
+
+跟 Personal AI Core／Rider OS／News OS 都不同的地方：Investment OS 仓库里嵌了一份完整但停在 v1.1 的 UEF 快照（`99_00`~`99_13`、`99_AR_00`~`99_AR_08`，仍被 ADR-1 等重大决策流程实际引用，但不含 §0.6 persistence 规则）——这次新规则只引用 Master UEF v1.12，完全没有修改或依赖这份嵌入快照，两者是独立议题。此外，Investment OS 的实际持久化基础设施是 GitHub + `clasp push` 部署到 live GAS（你在对话里直接告知，仓库自己的治理文件原本完全没提过）；新规则因此没有像其他 OS 一样考虑过 `/mnt/user-data/outputs/` 这类 AI 工具路径，而是直接写 Investment OS 自己的真实链路：GitHub commit（file-level）→ `clasp push`（engine-level，明确不要求逐文件 push）→ 独立 live 核验（方法不预设，但明确要求"push 命令没报错"不等于"已核验"）。G3 引用了 2025-06-13 真实发生过的 TruthEngine v1/v2 drift 事故作为这条规则存在的实证，不是假设性风险。
+
+Checkpoint System Active 仍标 ⏳ Pending——跟其它三个 OS 一致，规则刚建立，还没有后续 commit→deploy→verify 的实际循环可以证明。Investment OS 自己的业务逻辑、财务记录、市场数据逻辑、ADR-1 正在进行的 Phase 6 部署、L5-L7 等价的开发限制、30 个应用/引擎代码文件，本轮均未触碰。
 
 *本节由 Universal Governance Propagation 任务（2026-08-16）建立。之后每次实际核对某个 OS 的真实 repo 后，回来更新对应格子，不要整批批量改——每次只改刚核对过的那一个 OS。*
 
