@@ -15,7 +15,7 @@
 | Finance OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Investment OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Property OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
-| Reminder OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Reminder OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Personal Life OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | News OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Inventory & Procurement OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
@@ -65,6 +65,14 @@ Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted 
 跟 Personal AI Core／Rider OS／News OS 都不同的地方：Investment OS 仓库里嵌了一份完整但停在 v1.1 的 UEF 快照（`99_00`~`99_13`、`99_AR_00`~`99_AR_08`，仍被 ADR-1 等重大决策流程实际引用，但不含 §0.6 persistence 规则）——这次新规则只引用 Master UEF v1.12，完全没有修改或依赖这份嵌入快照，两者是独立议题。此外，Investment OS 的实际持久化基础设施是 GitHub + `clasp push` 部署到 live GAS（你在对话里直接告知，仓库自己的治理文件原本完全没提过）；新规则因此没有像其他 OS 一样考虑过 `/mnt/user-data/outputs/` 这类 AI 工具路径，而是直接写 Investment OS 自己的真实链路：GitHub commit（file-level）→ `clasp push`（engine-level，明确不要求逐文件 push）→ 独立 live 核验（方法不预设，但明确要求"push 命令没报错"不等于"已核验"）。G3 引用了 2025-06-13 真实发生过的 TruthEngine v1/v2 drift 事故作为这条规则存在的实证，不是假设性风险。
 
 Checkpoint System Active 仍标 ⏳ Pending——跟其它三个 OS 一致，规则刚建立，还没有后续 commit→deploy→verify 的实际循环可以证明。Investment OS 自己的业务逻辑、财务记录、市场数据逻辑、ADR-1 正在进行的 Phase 6 部署、L5-L7 等价的开发限制、30 个应用/引擎代码文件，本轮均未触碰。
+
+**Reminder OS — 详细状态（2026-08-22）**
+
+Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted ✅（Constitution 新增 P10，新增 `00_ADR_008_AI_Development_Persistence_Governance.gs`，两者均引用 UEF v1.12 §0.6 而非重复摘录）／File-level Verification ✅，**仅限本次实际改过的四个文件**（`00_Project_Constitution.js`／`00_ADR_008_AI_Development_Persistence_Governance.js`／`00_Project_State.js`／`00_File_Map.js`，各自都走完 persist + 独立核验 + 记录 checkpoint）／Overall Reminder OS Governance Verification ✅ **Confirmed**——四档 file-level checkpoint 之上，另有一次 READ-ONLY FINAL VERIFY（重新 md5sum 四份输出+对全新解压的 pristine 副本做 full-repo `diff -rq`，确认零 drift）加一条独立的 GOVERNANCE milestone checkpoint（见 `Universal-Recovery-Manifest.md`）。
+
+跟其它四个 OS 不同的地方：这是目前节奏最细的一轮——不是像 Rider OS／News OS／Investment OS 那样单轮完成，也不是像 Personal AI Core 那样多个文件放在同一回合，而是 Constitution／ADR／Project State／File Map 四个文件各自单独一个回合，逐档 modify→persist→独立核验→checkpoint→STOP，每一档都经你实时审阅、明确指令后才进下一档；draft 阶段你还给了两处具体措辞修正（P10 最后一段的适用范围表述、ADR-008 不自维护跨 OS 清单改指向本 Manifest），均已套用。Reminder OS 本来就有既有的 ADR 机制（7 个 ADR，005 号刻意保留给未来 Reminder Scheduler，未挪用），新规则记在 `00_ADR_008`，延续既有编号序列，不是新建一种文件类型；P10 放进 Reminder OS 自己既有的 P-series，不是模仿 News OS 的独立 §9 或 Investment OS 的独立 G-block。
+
+Checkpoint System Active 仍标 ⏳ Pending——跟其它四个 OS 一致，规则刚建立，还没有后续实际开发活动可以证明规则真的被日常遵守。Reminder OS 自己的业务逻辑（ReminderEngine／TemporalEngine／SheetUtils／QueryEngine／EventBus／Output／Setup）、全部测试文件、`README.md`（已确认 stale，非权威文件）、以及 File Map 里早于这次任务就存在的既有缺口（内容停在 2026-07-15，仍详细描述已被删除的 `25_ReminderEngine.gs`／`26_ReminderOffsetEngine.gs`，缺 ADR-006/007 登记），本轮均未触碰。Source-code persistence 是否为 GitHub（`.clasp.json`／`.claspignore` 证据强烈但本仓库文字从未明确确认，跟 Investment OS 那次你直接告知不同）刻意未在这次治理采纳里下判断，留待另行确认。
 
 *本节由 Universal Governance Propagation 任务（2026-08-16）建立。之后每次实际核对某个 OS 的真实 repo 后，回来更新对应格子，不要整批批量改——每次只改刚核对过的那一个 OS。*
 
