@@ -16,7 +16,7 @@
 | Investment OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Property OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Reminder OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
-| Personal Life OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Personal Life OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | News OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Inventory & Procurement OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Execution OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
@@ -73,6 +73,14 @@ Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted 
 跟其它四个 OS 不同的地方：这是目前节奏最细的一轮——不是像 Rider OS／News OS／Investment OS 那样单轮完成，也不是像 Personal AI Core 那样多个文件放在同一回合，而是 Constitution／ADR／Project State／File Map 四个文件各自单独一个回合，逐档 modify→persist→独立核验→checkpoint→STOP，每一档都经你实时审阅、明确指令后才进下一档；draft 阶段你还给了两处具体措辞修正（P10 最后一段的适用范围表述、ADR-008 不自维护跨 OS 清单改指向本 Manifest），均已套用。Reminder OS 本来就有既有的 ADR 机制（7 个 ADR，005 号刻意保留给未来 Reminder Scheduler，未挪用），新规则记在 `00_ADR_008`，延续既有编号序列，不是新建一种文件类型；P10 放进 Reminder OS 自己既有的 P-series，不是模仿 News OS 的独立 §9 或 Investment OS 的独立 G-block。
 
 Checkpoint System Active 仍标 ⏳ Pending——跟其它四个 OS 一致，规则刚建立，还没有后续实际开发活动可以证明规则真的被日常遵守。Reminder OS 自己的业务逻辑（ReminderEngine／TemporalEngine／SheetUtils／QueryEngine／EventBus／Output／Setup）、全部测试文件、`README.md`（已确认 stale，非权威文件）、以及 File Map 里早于这次任务就存在的既有缺口（内容停在 2026-07-15，仍详细描述已被删除的 `25_ReminderEngine.gs`／`26_ReminderOffsetEngine.gs`，缺 ADR-006/007 登记），本轮均未触碰。Source-code persistence 是否为 GitHub（`.clasp.json`／`.claspignore` 证据强烈但本仓库文字从未明确确认，跟 Investment OS 那次你直接告知不同）刻意未在这次治理采纳里下判断，留待另行确认。
+
+**Personal Life OS — 详细状态（2026-08-25）**
+
+Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted ✅（`00_ADR.js` 新增 ADR-2026-07-24-024，`00_Project_Constitution.js` 零之七(四) 追加简短引用，两者均引用 UEF v1.12 §0.6 items 3-4 而非重复摘录）／File-level Verification ✅，**仅限本次实际改过的三个文件**（`00_ADR.js`／`00_Project_Constitution.js`／`00_Project_State.js`，各自都走完 persist + 独立核验 + 记录 checkpoint）／Overall Personal Life OS Governance Verification ✅ **Confirmed**——三档 file-level checkpoint 之上，另有一次跨文件 13 项 GOVERNANCE CHECKPOINT read-only 核验（全过）加一次 8 节 STATUS CHECKPOINT read-only 综述（全过），两者均在这次 Universal 层同步之前完成，见 `Universal-Recovery-Manifest.md` 对应 GOVERNANCE checkpoint。
+
+跟其它五个 OS 不同的地方：Personal Life OS 是唯一一个在 Universal Governance 采纳之前，**先走了一整轮独立的 Constitution reconciliation**——最初上传的 `00_Project_Constitution.js` 核对时发现是历史性的 Productivity OS v4.7 文本（跟仓库其余已演进到 v5.1/v5.2 的治理文件不同步；期间还先发现过一次上传插曲，第一份档案误含了 News OS 已完成的治理内容），先经过一轮独立授权的 reconciliation（874 行历史文本原样保留，新增「零之七、v5.2 现状桥接」145 行）并独立核验通过，这次 ADR-024 才在这份已核验过的 Constitution 之上进行。OS-N audit 阶段还发现一项直接的本地证据：2026-08-14 Sprint 4 开发中途真实发生过一次容器文件系统重置事故（`00_ADR.js` ADR-2026-07-24-021／`Sprint4_Recovery_Audit.md`），两个文件的工作确认永久遗失——ADR-024 引用这次事故当本地证据，但没有夸大：事故当时的回应是补救（Recovery Audit），不是预防，预防规则是这次才正式建立。
+
+Checkpoint System Active 仍标 ⏳ Pending——跟其它五个 OS 一致，规则刚建立，还没有后续实际开发活动可以证明规则真的被日常遵守。Personal Life OS 自己既有的 Sprint Acceptance Gate 机制（ADR-2026-07-24-019，明确保持独立、不被本次规则取代）、22 条既有 ADR（001-022）、业务逻辑与全部应用代码、以及 Constitution reconciliation 阶段已发现并如实记录、明确排除在这轮范围外的四份仍停在 Productivity OS v4.7 的治理文件（`00_Known_Limitations.js`／`00_Command_Reference.js`／`00_Roadmap.js`／`00_Architecture_Review.js`），本轮均未触碰。
 
 *本节由 Universal Governance Propagation 任务（2026-08-16）建立。之后每次实际核对某个 OS 的真实 repo 后，回来更新对应格子，不要整批批量改——每次只改刚核对过的那一个 OS。*
 
