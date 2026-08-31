@@ -82,6 +82,16 @@ Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted 
 
 Checkpoint System Active 仍标 ⏳ Pending——跟其它五个 OS 一致，规则刚建立，还没有后续实际开发活动可以证明规则真的被日常遵守。Personal Life OS 自己既有的 Sprint Acceptance Gate 机制（ADR-2026-07-24-019，明确保持独立、不被本次规则取代）、22 条既有 ADR（001-022）、业务逻辑与全部应用代码、以及 Constitution reconciliation 阶段已发现并如实记录、明确排除在这轮范围外的四份仍停在 Productivity OS v4.7 的治理文件（`00_Known_Limitations.js`／`00_Command_Reference.js`／`00_Roadmap.js`／`00_Architecture_Review.js`），本轮均未触碰。
 
+**Finance OS — 只读稽核记录（2026-08-30，非採纳，性质跟以上六个 OS 不同）**
+
+Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted **⏳ Deferred**（稽核后明确决定不做，不是尚未开始）／File-level Verification ⏳ Pending（没有文件被修改，因此没有可核验的变更）／Overall Finance OS Governance Verification ⏳ Pending。
+
+跟以上六个已完成本地採纳的 OS 不同：Finance OS 走完 Phase 0–2 Layer A 只读稽核后，结论是不採纳，不是待办。自身治理基线仍为 UEF v1.1／Blueprint v1.1（比 Master 现行 v1.12 落后 11 个小版本），唯一的 `FinanceOS_00_ADR_Log.js` 里 ADR-001 仍为 Proposed — pending sign-off，从未签署，全仓库 0 Engine／0 Sprint／0 处 implementation code（`FinanceOS_00_File_Map.js` 明写整合/业务逻辑代码"none，等治理层签署才开始"）。UEF §0.6 item 4 的 Checkpoint hierarchy 明确以 Engine／Sprint 为最小单位，Finance OS 目前没有具体的本地依附对象，因此本轮 governance propagation 对 Finance OS 明确 Deferred，未新增 ADR、未新增 Project State、未创建任何治理文件，上方表格 Finance OS 一行现有数值未变动。
+
+这一轮稽核也确认下方"## Finance OS"叙述段（"Phase 1 已验证订阅 Rider OS 支出事件并自动记账"）与关系表里对应的一行，实际来自另一个不相关的平行专案（Communication Architecture，`ADR-019`~`021`／`UEF-ADR-Communication-Architecture.md`，2026-07-29~31）的一次性草稿实作，从未整合进 Finance OS 真实 repo，也已被该平行专案自己后续的 `Session-Handoff-Brief.md` 明文降级为"未对照真实代码的一次性设计草稿"。这段叙述本身此处不修正，是独立的 registry-maintenance 议题，留待另行明确授权。
+
+Finance OS 自己的开放事项（跟这次治理传播任务无关，本轮均未触碰）：ADR-001 从 2026-07-20 起从未签署；UEF §0.2 Tier 1 强制文件清单里的 `00_Project_State.js`／`00_Review_History.js` 目前缺席（File_Map 已说明是刻意延后，非遗漏）。
+
 *本节由 Universal Governance Propagation 任务（2026-08-16）建立。之后每次实际核对某个 OS 的真实 repo 后，回来更新对应格子，不要整批批量改——每次只改刚核对过的那一个 OS。*
 
 ---
