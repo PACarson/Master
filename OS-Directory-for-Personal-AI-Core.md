@@ -18,7 +18,7 @@
 | Reminder OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | Personal Life OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
 | News OS | ✅ | ✅ → **Locally Adopted** | ✅ **Confirmed**（见下方详细状态） | ⏳ Pending |
-| Inventory & Procurement OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
+| Inventory & Procurement OS | ✅ | ✅ → **Locally Adopted（仅 Inventory OS，§0.6-only；Procurement 身份未确认）** | ✅ **Confirmed（仅 Inventory OS 的 §0.6 採纳，见下方详细状态）** | ⏳ Pending |
 | Execution OS | ✅ | ✅ | ⏳ Pending | ⏳ Pending |
 | Content / Video OS | ✅ | N/A（尚未设计架构） | N/A | N/A |
 | Research / Knowledge OS | ✅ | N/A（尚未设计架构） | N/A | N/A |
@@ -91,6 +91,18 @@ Universal Defined ✅／Inherited by Governance Authority ✅／Locally Adopted 
 这一轮稽核也确认下方"## Finance OS"叙述段（"Phase 1 已验证订阅 Rider OS 支出事件并自动记账"）与关系表里对应的一行，实际来自另一个不相关的平行专案（Communication Architecture，`ADR-019`~`021`／`UEF-ADR-Communication-Architecture.md`，2026-07-29~31）的一次性草稿实作，从未整合进 Finance OS 真实 repo，也已被该平行专案自己后续的 `Session-Handoff-Brief.md` 明文降级为"未对照真实代码的一次性设计草稿"。这段叙述本身此处不修正，是独立的 registry-maintenance 议题，留待另行明确授权。
 
 Finance OS 自己的开放事项（跟这次治理传播任务无关，本轮均未触碰）：ADR-001 从 2026-07-20 起从未签署；UEF §0.2 Tier 1 强制文件清单里的 `00_Project_State.js`／`00_Review_History.js` 目前缺席（File_Map 已说明是刻意延后，非遗漏）。
+
+**Inventory OS — 详细状态（2026-08-31 完成 §0.6-only 本地採纳）**
+
+Universal Defined ✅／Inherited by Governance Authority ✅（D1，structural）／Locally Adopted ✅ → **仅限 UEF v1.12 §0.6 overlay**（`Universal_Domain_OS_Blueprint_v1.2.md` **未被採纳**，两者是分开的 Universal 文件，本次只接入前者）／File-level Verification ✅ Confirmed（明确仅限本轮实际修改的三个文件：`00_Project_Constitution.txt` 八、UNIVERSAL GOVERNANCE OVERLAY G1-G5；`00_Project_State.txt` DD7；`00_File_Map.txt` Governance Adoption Index——三档均为纯新增，Cross-File Governance Checkpoint 已通过）／Overall Inventory OS §0.6 Governance Verification ✅ Confirmed／Checkpoint System Active ⏳ Pending。
+
+跟前七个已完成本地採纳的 OS 走的是同一套流程、但范围不同：Inventory OS 从 V1 到 V4.1 全程独立发展，从未引用过 UEF、ADR/ADL 惯例或任一份 Universal Domain Blueprint 文件（唯一线索是已被取代的 V2 草稿曾提过"Domain Blueprint V2"，V4.1 未再提及）。经使用者在两个候选方向（Option A：全面对齐 Universal Blueprint／Option B：仅接入 §0.6 治理 overlay）之间明确批准 Option B——§0.6 是 Inventory OS 既有 domain/runtime governance（Domain OS Lifecycle Standard／S1-S9／Capability Layer／DD1-DD6）之上的独立一层，不取代、不修改、不废弃。**这不代表 Inventory OS 全面对齐 Universal Blueprint，也不代表其架构完全符合所有 Universal 规范**——只有 §0.6 这一条规则被本地採纳，这是刻意、明确、永久的范围限制，不是尚未完成全面对齐的中间状态。
+
+Inventory OS 既有的 checkpoint／persist／source of truth／export／version／audit 六个词继续保留其原有业务/运行时含义（详见 Constitution G4），不因这次採纳而改名或重构任何代码。为了让 §0.6 的 Engine/Sprint checkpoint hierarchy 有具体依附对象，Constitution G5／State DD7(e) 定义了纯治理层面的对应关系（编号模组档案≈Engine，一批有明确 scope、可验证完成的工作≈Sprint），不代表 V1-V4.1 的既有开发历史被回溯性重新归类，也没有改变 S1-S9 本身。
+
+Inventory OS 自己真实的 implementation 现状（跟本次治理採纳无关，本轮均未触碰，**不因 Governance Verified 而视为已完成/已验收/正式定案**）：V4.1 当前活跃，21-29 是当前 S1-S9 实作，80-83 是 V1 legacy、删除仍待用户批准；V4.1 使用者测试、并发场景测试、Telegram webhook 对接均为 Inventory 自己尚在进行中的开放工作。
+
+跟 Procurement OS 的关系本轮维持不变、未处理：`81_Procurement-main.zip` 实际内容是已被取代的 Inventory V2 草稿，Procurement OS 自己的独立 repo 身份尚未确认——上方表格"Inventory & Procurement OS"这个合并行的名称、结构、Procurement 部分的状态本轮均未变动，只更新了明确属于 Inventory OS 部分的栏位数值。
 
 *本节由 Universal Governance Propagation 任务（2026-08-16）建立。之后每次实际核对某个 OS 的真实 repo 后，回来更新对应格子，不要整批批量改——每次只改刚核对过的那一个 OS。*
 
